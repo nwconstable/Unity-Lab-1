@@ -8,15 +8,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer mainSpriteRenderer;
     // Start is called before the first frame update
     [SerializeField] private float moveSpeed;
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float jumpTimer;
+    private float timeElapsed;
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             mainRigidbody.AddForce(new Vector2(-moveSpeed * Time.deltaTime, 0));
             mainSpriteRenderer.flipX = true;
@@ -26,9 +24,11 @@ public class PlayerController : MonoBehaviour
             mainRigidbody.AddForce(new Vector2(moveSpeed * Time.deltaTime, 0));
             mainSpriteRenderer.flipX = false;
         }
-        if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space))
+        if((Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && timeElapsed > jumpTimer)
         {
             mainRigidbody.AddForce(new Vector2(0, 200));
+            timeElapsed = 0;
         }
+        timeElapsed += Time.deltaTime;
     }
 }
