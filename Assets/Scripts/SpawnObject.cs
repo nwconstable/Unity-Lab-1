@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class SpawnObject : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [SerializeField] private MeshRenderer meshRenderer;
+    [SerializeField] private AudioSource audioSource;
+
+    public void SetColor(Color color){
+        meshRenderer.material.SetColor("_Color", color);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private float lastHitTime = 0;
+    private void OnCollisionEnter(Collision collision){
+        if((Time.time - lastHitTime) > 0.25f) {
+            lastHitTime = Time.time;
+            audioSource.volume = Mathf.InverseLerp(0, 10, collision.relativeVelocity.magnitude);
+            audioSource.pitch = Random.Range(0.75f, 1.25f);
+            audioSource.Play();
+        }
     }
 }
