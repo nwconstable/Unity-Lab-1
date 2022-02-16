@@ -8,7 +8,9 @@ public class SpawnObject : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
 
     public void SetColor(Color color){
-        meshRenderer.material.SetColor("_Color", color);
+        for(int i = 0; i < meshRenderer.materials.Length; i++){
+            meshRenderer.materials[i].SetColor("_Color", color);
+        }
     }
 
     private float lastHitTime = 0;

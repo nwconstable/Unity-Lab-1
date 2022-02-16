@@ -11,6 +11,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private Button platformerButton;
     [SerializeField] private Button threeDButton;
+    [SerializeField] private Button pongButton;
 
     // Start is called before the first frame update
     void Start() 
@@ -19,7 +20,8 @@ public class MainMenuManager : MonoBehaviour
         openCredits.onClick.AddListener(() => { creditsPanel.SetActive(true); } );
         platformerButton.onClick.AddListener(() => { LoadingScreen.LoadScene("NotQuitePlatformer"); } );
         closeCreditsButton.onClick.AddListener(() => { creditsPanel.SetActive(false); } );
-        threeDButton.onClick.AddListener(() => { LoadingScreen.LoadScene("GameScene3D"); } );
+        threeDButton.onClick.AddListener(() => { LoadingScreen.LoadScene("3DSpawn"); } );
+        pongButton.onClick.AddListener(() => { LoadingScreen.LoadScene("Pong"); } );
     }
 
     // Update is called once per frame
