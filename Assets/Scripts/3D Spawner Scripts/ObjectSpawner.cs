@@ -12,7 +12,7 @@ public class ObjectSpawner : MonoBehaviour
     
     void Update() {
         if (Input.GetKey(KeyCode.Space)) {
-            for(int i =0; i < 1000; i++) {
+            for(int i =0; i < 20; i++) {
                 SpawnObject newObject = Instantiate(objectPrefab);
                 newObject.SetColor(Random.ColorHSV(0, 1, 0.75f, 1, 0.5f, 1, 1, 1));
                 newObject.transform.position = spawnLocation.position;

@@ -14,6 +14,10 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Button pongButton;
     [SerializeField] private Button shooterButton;
 
+    void Awake() {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     // Start is called before the first frame update
     void Start() 
     {
@@ -24,11 +28,5 @@ public class MainMenuManager : MonoBehaviour
         threeDButton.onClick.AddListener(() => { LoadingScreen.LoadScene("3DSpawn"); } );
         pongButton.onClick.AddListener(() => { LoadingScreen.LoadScene("Pong"); } );
         shooterButton.onClick.AddListener(() => { LoadingScreen.LoadScene("Shooter"); } );
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
